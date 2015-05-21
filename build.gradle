@@ -1,0 +1,17 @@
+apply plugin: 'java'
+group = 'com.phones'
+version = '1.0.0-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+
+    }
+}
+

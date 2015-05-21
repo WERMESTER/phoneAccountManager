@@ -1,0 +1,6 @@
+rootProject.name = 'accountManager'
+include 'api', 'api-impl', 'domain', 'apps'
+
+
+
+
