@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="phoneManager">
+    <head>
+        <script src="vendor/angular/angular.min.js"></script>
+        <script src="vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="js/apps.js"></script>
+        <link rel="stylesheet" href="vendor/angular-bootstrap/css/bootstrap.min.css" ></head>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        Phone account manager
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <section ng-controller="accountsController">
+            <article style="width:60%; margin:auto;">
+                <div ng-if="error" class="alert alert-danger"> {{error}}</div>
+                <table ng-if="!selected" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Serial</th>
+                        <th>Msisdn</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="account in accounts" ng-click="view(account)">
+                        <th scope="row">{{account.id}}</th>
+                        <td> {{account.serial}}</td>
+                        <td>{{account.msisdn}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <form ng-if="selected">
+                    <button style="float:right;" type="button" class="btn btn-default btn-xs" ng-click="unView()" aria-label="view">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <div class="form-group">
+                        <label for="id">Id</label>
+                        <input type="text" class="form-control" id="id" ng-model="selected.id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="serial">Sim Serial</label>
+                        <input type="text" class="form-control" id="serail" ng-model="selected.serial" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="msisdn">msisdn</label>
+                        <input type="text" class="form-control" id="msisdn" ng-model="selected.msisdn" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="owner-firstname">First name</label>
+                        <input type="text" class="form-control" id="owner-firstname" ng-model="selected.firstname" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="owner-lastname">Last name</label>
+                        <input type="text" class="form-control" id="owner-lastname" ng-model="selected.lastname" readonly>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </body>
+</html>
