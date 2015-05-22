@@ -8,4 +8,6 @@ java source = 1.8
 
     * ./gradlew bootRepackage (or on windows ./gradlew.bat bootRepackage)
        java -jar apps/build/libs/apps.jar
+       
+For viewing result go to http://localhost:8080
 
