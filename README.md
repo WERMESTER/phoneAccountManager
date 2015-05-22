@@ -1,6 +1,8 @@
 # phoneAccountManager
+
 java source = 1.8
-2 solutions for run project
+
+2 solutions for run project:
 
     * ./gradlew bootRun  (or on windows ./gradlew.bat bootRun)
 
