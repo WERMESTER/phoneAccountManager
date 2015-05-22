@@ -7,6 +7,8 @@ import com.phones.account.api.dto.PhoneAccountDTO;
 import com.phones.account.api.impl.AccountServiceReaderImpl;
 import com.phones.account.api.impl.AccountServiceWriterImpl;
 import com.phones.account.api.impl.exception.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,9 @@ import java.util.Collection;
 @RequestMapping("services/accounts")
 @EnableAutoConfiguration
 public class AccountManagerController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccountManagerController.class);
+
     public static void main(String[] args) {
         SpringApplication.run(AccountManagerController.class);
     }
@@ -59,11 +64,13 @@ public class AccountManagerController {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "resource not found")
     public void trapNotFound(NotFoundException ex){
+        LOGGER.error("request not found ",ex);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "bad request")
     public void trapNotFoundIllegal(IllegalArgumentException ex){
+        LOGGER.error("request fail ",ex);
     }
 
 
